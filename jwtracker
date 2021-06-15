@@ -1,0 +1,55 @@
+#!/bin/ruby
+require 'base64'
+require 'openssl' 
+require 'json'
+require 'http'
+require_relative "/usr/share/jwtracker/general.rb"
+require_relative "/usr/share/jwtracker/jwtrce.rb"
+require_relative "/usr/share/jwtracker/jwtsql.rb"
+require_relative "/usr/share/jwtracker/jwtred.rb"
+class Token
+    attr_accessor :infos, :header, :payload, :signature
+    def initialize(infos, header, payload, signature)
+        @infos = infos,
+        @header = header,
+        @payload = payload,
+        @signature = signature
+    end
+end
+
+ARGS = { :shell=>'default', :writer=>'EsasAdam' }
+UNFLAGGED_ARGS = [ :unflag ]
+next_arg= UNFLAGGED_ARGS.first
+ARGV.each do |arg|
+  case arg
+  when '-h','--help' then ARGS[:help] = true
+  when '-t','--token' then next_arg = :jwtoken
+  else
+    if next_arg
+      ARGS[next_arg] = arg
+      UNFLAGGED_ARGS.delete(next_arg)
+    end
+    next_arg = UNFLAGGED_ARGS.first
+  end
+end
+
+if ARGS.length <= 2
+    puts USAGE
+    puts HELP
+    exit
+end
+
+if ARGS[:help] or ARGS[:unflag]
+    puts HELP if ARGS[:help]
+    exit
+end
+
+include General
+include JWTrce
+include JWTred
+include JWTsql
+include JWTjwki
+
+JWTred.redirect
+JWTsql.sqlinjection
+JWTrce.remotecode
