@@ -48,7 +48,6 @@ include General
 include JWTrce
 include JWTred
 include JWTsql
-include JWTjwki
 
 JWTred.redirect
 JWTsql.sqlinjection
