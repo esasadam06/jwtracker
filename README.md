@@ -5,10 +5,10 @@ jwtracker is a tool developed to check the security of json web tokens used in A
 
 For installation use setup.sh
 
-`-sudo setup.sh`
+`sudo bash setup.sh`
 
 Usage:
 
-`-sudo jwtracker`
+`sudo jwtracker`
 
 ![#32D253](https://via.placeholder.com/15/32D253/000000?text=+) `version 1`
