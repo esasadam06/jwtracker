@@ -8,7 +8,7 @@ For installation use setup.sh
 `sudo bash setup.sh`
 
 Usage:
-
+ 
 `sudo jwtracker`
 
 ![#32D253](https://via.placeholder.com/15/32D253/000000?text=+) `version 1`
