@@ -3,11 +3,10 @@
 
 jwtracker is a tool developed to check the security of json web tokens used in APIs. With jwtracker, you can check if your jwts have SQL injection, remote code execution or url redirection.
 
-
 For installation use setup.sh
 
--sudo setup.sh
+`-sudo setup.sh`
 
 Usage:
 
--sudo jwtracker 
+`-sudo jwtracker`
